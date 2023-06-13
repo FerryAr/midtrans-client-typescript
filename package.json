@@ -1,0 +1,57 @@
+{
+  "name": "midtrans-client-typescript",
+  "version": "0.0.1",
+  "description": "Unofficial Midtrans Payment API Client for Typescript",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "NODE_OPTIONS='--max-old-space-size=8192' tsc",
+    "test": "mocha --require ts-node/register --timeout 10000 dist/test/*.test.js"
+  },
+  "keywords": [
+    "midtrans-node-client",
+    "payment",
+    "payment gateway",
+    "midtrans",
+    "midtrans-client",
+    "commonjs",
+    "node",
+    "nodejs",
+    "node_modules",
+    "javascript",
+    "typescript"
+  ],
+  "engines": {
+    "node": ">=16",
+    "npm": ">=8"
+  },
+  "author": {
+    "name": "Azriel Akbar Ferry Ardiansyah Kusumawardhana",
+    "email": "ferryakbarardiansyah@gmail.com"
+  },
+  "repository": {
+    "url": "https://github.com/FerryAr/midtrans-client-typescript"
+  },
+  "homepage": "https://github.com/FerryAr/midtrans-client-typescript",
+  "bugs": {
+    "url": "https://github.com/FerryAr/midtrans-client-typescript/issues"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^1.4.0",
+    "lodash": "^4.17.21"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.3.5",
+    "@types/lodash": "^4.14.195",
+    "@types/mocha": "^10.0.1",
+    "@types/node": "^20.3.1",
+    "chai": "^4.3.7",
+    "mocha": "^10.2.0",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.1.3"
+  }
+}
