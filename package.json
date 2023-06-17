@@ -1,6 +1,6 @@
 {
   "name": "midtrans-client-typescript",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Unofficial Midtrans Payment API Client for Typescript",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -9,7 +9,20 @@
   ],
   "scripts": {
     "build": "NODE_OPTIONS='--max-old-space-size=8192' tsc",
-    "test": "mocha --require ts-node/register --timeout 10000 dist/test/*.test.js"
+    "test": "pnpm run build && mocha --timeout 10000 dist/test/*.test.js",
+    "prepare": "pnpm run build",
+    "prepublishOnly": "pnpm run build",
+    "preversion": "pnpm run build",
+    "version": "pnpm run build",
+    "postversion": "git push --follow-tags",
+    "precommit": "pnpm run test",
+    "prepush": "pnpm run test",
+    "lint": "eslint --ext .ts src",
+    "lint:fix": "eslint --fix --ext .ts src",
+    "format": "prettier --write src/**/*.ts",
+    "format:check": "prettier --check src/**/*.ts",
+    "format:fix": "prettier --write src/**/*.ts",
+    "clean": "rm -rf dist"
   },
   "keywords": [
     "midtrans-node-client",
