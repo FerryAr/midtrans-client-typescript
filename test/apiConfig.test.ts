@@ -1,5 +1,5 @@
 import { expect } from "chai";
-import ApiConfig from "./../lib/apiConfig";
+import { ApiConfig } from "./../lib/apiConfig";
 import cons from "./sharedConstants";
 
 describe("Config.js", () => {

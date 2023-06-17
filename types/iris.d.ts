@@ -1,4 +1,4 @@
-declare class Iris {
+export declare class Iris {
   constructor(options?: IrisOptions);
   ping(): Promise<any>;
   createBeneficiaries(parameter?: any): Promise<any>;
@@ -21,5 +21,3 @@ interface IrisOptions {
   isProduction?: boolean;
   serverKey: string;
 }
-
-export default Iris;

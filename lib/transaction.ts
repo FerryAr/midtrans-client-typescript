@@ -1,12 +1,12 @@
-import ApiConfig from "./apiConfig";
-import HttpClient from "./httpClient";
+import { ApiConfig } from "./apiConfig";
+import { HttpClient } from "./httpClient";
 
 /**
  * These are wrapper/implementation of API methods described on:
  * https://api-docs.midtrans.com/#midtrans-api
  * @return {Promise} - Promise that contains JSON API response decoded as Object
  */
-class Transaction {
+export class Transaction {
   parent: any;
 
   constructor(parentObj: any = {}) {
@@ -131,5 +131,3 @@ class Transaction {
 }
 
 class MidtransNotificationError extends Error {}
-
-export default Transaction;

@@ -1,4 +1,4 @@
-declare class HttpClient {
+export declare class HttpClient {
   constructor(parentObj?: any);
   request(
     httpMethod: string,
@@ -8,5 +8,3 @@ declare class HttpClient {
     secondParam?: object | null
   ): Promise<any>;
 }
-
-export default HttpClient;

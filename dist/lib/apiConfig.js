@@ -3,6 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.ApiConfig = void 0;
 const lodash_1 = __importDefault(require("lodash"));
 /**
  * Config Object that is used to store isProduction, serverKey, clientKey.
@@ -76,6 +77,7 @@ class ApiConfig {
             : ApiConfig.IRIS_SANDBOX_BASE_URL;
     }
 }
+exports.ApiConfig = ApiConfig;
 // Static vars
 ApiConfig.CORE_SANDBOX_BASE_URL = "https://api.sandbox.midtrans.com";
 ApiConfig.CORE_PRODUCTION_BASE_URL = "https://api.midtrans.com";
@@ -85,4 +87,3 @@ ApiConfig.SNAP_PRODUCTION_BASE_URL = "https://app.midtrans.com/snap/v1";
 ApiConfig.IRIS_SANDBOX_BASE_URL =
     "https://app.sandbox.midtrans.com/iris/api/v1";
 ApiConfig.IRIS_PRODUCTION_BASE_URL = "https://app.midtrans.com/iris/api/v1";
-exports.default = ApiConfig;

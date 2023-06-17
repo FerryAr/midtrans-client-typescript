@@ -1,8 +1,8 @@
 "use strict";
 
 import { expect } from "chai";
-import Midtrans from "../index";
-import CoreApi from "../lib/coreApi";
+import { Midtrans } from "../index";
+import { CoreApi } from "../lib/coreApi";
 import cons from "./sharedConstants.js";
 
 let tokenId = "";
@@ -360,9 +360,11 @@ describe("CoreApi.js", () => {
     let response = await core.createSubscription(parameter);
     let subscriptionId = response.id;
     let parameter2 = generateParamUpdateSubscription();
-    return core.updateSubscription(subscriptionId, parameter2).then((res: any) => {
-      expect(res.status_message).to.be.equals("Subscription is updated.");
-    });
+    return core
+      .updateSubscription(subscriptionId, parameter2)
+      .then((res: any) => {
+        expect(res.status_message).to.be.equals("Subscription is updated.");
+      });
   });
 
   it("fail to get subscription with dummy subscription id", () => {

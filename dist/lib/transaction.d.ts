@@ -3,7 +3,7 @@
  * https://api-docs.midtrans.com/#midtrans-api
  * @return {Promise} - Promise that contains JSON API response decoded as Object
  */
-declare class Transaction {
+export declare class Transaction {
     parent: any;
     constructor(parentObj?: any);
     status(transactionId?: string): any;
@@ -16,4 +16,3 @@ declare class Transaction {
     refundDirect(transactionId?: string, parameter?: {}): any;
     notification(notificationObj: any): Promise<unknown>;
 }
-export default Transaction;

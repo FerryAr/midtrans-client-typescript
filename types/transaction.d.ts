@@ -1,4 +1,4 @@
-declare class Transaction {
+export declare class Transaction {
   parent: any;
   constructor(parentObj?: any);
   status(transactionId?: string): Promise<any>;
@@ -11,5 +11,3 @@ declare class Transaction {
   refundDirect(transactionId?: string, parameter?: any): Promise<any>;
   notification(notificationObj?: any): Promise<any>;
 }
-
-export default Transaction;

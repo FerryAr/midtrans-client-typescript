@@ -1,5 +1,5 @@
 import { expect } from "chai";
-import Snap from "../lib/snap";
+import { Snap } from "../lib/snap";
 import cons from "./sharedConstants";
 
 describe("Snap.js", () => {

@@ -1,11 +1,11 @@
-import ApiConfig from "./apiConfig";
-import HttpClient from "./httpClient";
-import Transaction from "./transaction";
+import { ApiConfig } from "./apiConfig";
+import { HttpClient } from "./httpClient";
+import { Transaction } from "./transaction";
 
 /**
  * CoreApi object able to do API request to Midtrans Core API
  */
-class CoreApi {
+export class CoreApi {
   apiConfig: ApiConfig;
   httpClient: HttpClient;
   transaction: Transaction;
@@ -258,5 +258,3 @@ class CoreApi {
     return responsePromise;
   }
 }
-
-export default CoreApi;

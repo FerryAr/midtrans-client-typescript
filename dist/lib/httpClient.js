@@ -3,8 +3,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.HttpClient = void 0;
 const axios_1 = __importDefault(require("axios"));
-const midtransError_1 = __importDefault(require("./midtransError"));
+const midtransError_1 = require("./midtransError");
 class HttpClient {
     constructor(parentObj = {}) {
         this.parent = parentObj;
@@ -33,7 +34,7 @@ class HttpClient {
                     reqBodyPayload = JSON.parse(reqBodyPayload);
                 }
                 catch (err) {
-                    reject(new midtransError_1.default(`Failed to parse 'body parameters' string as JSON. Use JSON string or Object as 'body parameters'. Message: ${err}`));
+                    reject(new midtransError_1.MidtransError(`Failed to parse 'body parameters' string as JSON. Use JSON string or Object as 'body parameters'. Message: ${err}`));
                 }
             }
             if (typeof reqQueryParam === 'string') {
@@ -41,7 +42,7 @@ class HttpClient {
                     reqQueryParam = JSON.parse(reqQueryParam);
                 }
                 catch (err) {
-                    reject(new midtransError_1.default(`Failed to parse 'query parameters' string as JSON. Use JSON string or Object as 'query parameters'. Message: ${err}`));
+                    reject(new midtransError_1.MidtransError(`Failed to parse 'query parameters' string as JSON. Use JSON string or Object as 'query parameters'. Message: ${err}`));
                 }
             }
             thisInstance.http_client({
@@ -59,21 +60,21 @@ class HttpClient {
                 if (res.data.hasOwnProperty('status_code') &&
                     res.data.status_code >= 400 &&
                     res.data.status_code != 407) {
-                    reject(new midtransError_1.default(`Midtrans API is returning API error. HTTP status code: ${res.data.status_code}. API response: ${JSON.stringify(res.data)}`, res.data.status_code, res.data, res));
+                    reject(new midtransError_1.MidtransError(`Midtrans API is returning API error. HTTP status code: ${res.data.status_code}. API response: ${JSON.stringify(res.data)}`, res.data.status_code, res.data, res));
                 }
                 resolve(res.data);
             })
                 .catch((err) => {
                 const res = err.response;
                 if (typeof res !== 'undefined' && res.status >= 400) {
-                    reject(new midtransError_1.default(`Midtrans API is returning API error. HTTP status code: ${res.status}. API response: ${JSON.stringify(res.data)}`, res.status, res.data, res));
+                    reject(new midtransError_1.MidtransError(`Midtrans API is returning API error. HTTP status code: ${res.status}. API response: ${JSON.stringify(res.data)}`, res.status, res.data, res));
                 }
                 else if (typeof res === 'undefined') {
-                    reject(new midtransError_1.default(`Midtrans API request failed. HTTP response not found, likely connection failure. Message: ${JSON.stringify(err.message)}`, null, null, err));
+                    reject(new midtransError_1.MidtransError(`Midtrans API request failed. HTTP response not found, likely connection failure. Message: ${JSON.stringify(err.message)}`, null, null, err));
                 }
                 reject(err);
             });
         });
     }
 }
-exports.default = HttpClient;
+exports.HttpClient = HttpClient;

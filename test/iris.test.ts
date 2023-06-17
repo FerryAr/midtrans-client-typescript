@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import Midtrans from '../index';
+import { Midtrans } from '../index';
 import cons from './sharedConstants';
 
 let globVar: { createdRefNo: string } = {

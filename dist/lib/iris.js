@@ -1,11 +1,9 @@
 "use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-const apiConfig_1 = __importDefault(require("./apiConfig"));
-const httpClient_1 = __importDefault(require("./httpClient"));
-const transaction_1 = __importDefault(require("./transaction"));
+exports.Iris = void 0;
+const apiConfig_1 = require("./apiConfig");
+const httpClient_1 = require("./httpClient");
+const transaction_1 = require("./transaction");
 class Iris {
     /**
      * Initiate with options
@@ -16,9 +14,9 @@ class Iris {
         isProduction: false,
         serverKey: "",
     }) {
-        this.apiConfig = new apiConfig_1.default(options);
-        this.httpClient = new httpClient_1.default(this);
-        this.transaction = new transaction_1.default(this);
+        this.apiConfig = new apiConfig_1.ApiConfig(options);
+        this.httpClient = new httpClient_1.HttpClient(this);
+        this.transaction = new transaction_1.Transaction(this);
     }
     /**
      * Do `/ping` API request to Iris API
@@ -165,4 +163,4 @@ class Iris {
         return this.httpClient.request("get", this.apiConfig.get().serverKey, apiUrl);
     }
 }
-exports.default = Iris;
+exports.Iris = Iris;

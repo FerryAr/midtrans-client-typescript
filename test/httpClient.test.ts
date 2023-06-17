@@ -1,5 +1,5 @@
 import { expect } from "chai";
-import HttpClient from "./../lib/httpClient";
+import { HttpClient } from "./../lib/httpClient";
 import cons from "./sharedConstants";
 
 function generateParamMin(): any {

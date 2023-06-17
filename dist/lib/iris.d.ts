@@ -1,7 +1,7 @@
-import ApiConfig from "./apiConfig";
-import HttpClient from "./httpClient";
-import Transaction from "./transaction";
-declare class Iris {
+import { ApiConfig } from "./apiConfig";
+import { HttpClient } from "./httpClient";
+import { Transaction } from "./transaction";
+export declare class Iris {
     apiConfig: ApiConfig;
     httpClient: HttpClient;
     transaction: Transaction;
@@ -104,4 +104,3 @@ declare class Iris {
      */
     getUserInformation(): Promise<any>;
 }
-export default Iris;

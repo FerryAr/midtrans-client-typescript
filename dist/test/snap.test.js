@@ -4,15 +4,15 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const chai_1 = require("chai");
-const snap_1 = __importDefault(require("../lib/snap"));
+const snap_1 = require("../lib/snap");
 const sharedConstants_1 = __importDefault(require("./sharedConstants"));
 describe("Snap.js", () => {
     it("able to start test", () => {
         (0, chai_1.expect)(true).to.be.true;
     });
     it("class should be working", () => {
-        let snap = new snap_1.default();
-        (0, chai_1.expect)(snap instanceof snap_1.default).to.be.true;
+        let snap = new snap_1.Snap();
+        (0, chai_1.expect)(snap instanceof snap_1.Snap).to.be.true;
         (0, chai_1.expect)(typeof snap.createTransaction).to.be.equal("function");
         (0, chai_1.expect)(typeof snap.createTransactionToken).to.be.equal("function");
         (0, chai_1.expect)(typeof snap.createTransactionRedirectUrl).to.be.equal("function");
@@ -20,7 +20,7 @@ describe("Snap.js", () => {
         (0, chai_1.expect)(snap.apiConfig.get().clientKey).to.be.a("string");
     });
     it("able to create transaction simple param", () => {
-        let snap = new snap_1.default(generateConfig());
+        let snap = new snap_1.Snap(generateConfig());
         return snap.createTransaction(generateParamMin()).then((res) => {
             (0, chai_1.expect)(res).to.have.property("token");
             (0, chai_1.expect)(res.token).to.be.a("string");
@@ -29,7 +29,7 @@ describe("Snap.js", () => {
         });
     });
     it("able to create transaction max param", () => {
-        let snap = new snap_1.default(generateConfig());
+        let snap = new snap_1.Snap(generateConfig());
         return snap.createTransaction(generateParamMax()).then((res) => {
             (0, chai_1.expect)(res).to.have.property("token");
             (0, chai_1.expect)(res.token).to.be.a("string");
@@ -38,13 +38,13 @@ describe("Snap.js", () => {
         });
     });
     it("able to create transaction token", () => {
-        let snap = new snap_1.default(generateConfig());
+        let snap = new snap_1.Snap(generateConfig());
         return snap.createTransactionToken(generateParamMin()).then((token) => {
             (0, chai_1.expect)(token).to.be.a("string");
         });
     });
     it("able to create transaction redirect_url", () => {
-        let snap = new snap_1.default(generateConfig());
+        let snap = new snap_1.Snap(generateConfig());
         return snap
             .createTransactionRedirectUrl(generateParamMin())
             .then((redirect_url) => {
@@ -52,7 +52,7 @@ describe("Snap.js", () => {
         });
     });
     it("fail to status transaction 404 with non exists order_id", () => {
-        let snap = new snap_1.default(generateConfig());
+        let snap = new snap_1.Snap(generateConfig());
         return snap.transaction
             .status("non exists order_id")
             .then((res) => { })
@@ -71,7 +71,7 @@ describe("Snap.js", () => {
     //     })
     // })
     it("able to re-set serverKey via setter", () => {
-        let snap = new snap_1.default({ serverKey: "", clientKey: "abc" });
+        let snap = new snap_1.Snap({ serverKey: "", clientKey: "abc" });
         (0, chai_1.expect)(snap.apiConfig.get().serverKey).to.be.equals("");
         (0, chai_1.expect)(snap.apiConfig.get().clientKey).to.be.equals("abc");
         (0, chai_1.expect)(snap.apiConfig.get().isProduction).to.be.false;
@@ -81,7 +81,7 @@ describe("Snap.js", () => {
         (0, chai_1.expect)(snap.apiConfig.get().isProduction).to.be.false;
     });
     it("able to re-set serverKey via property", () => {
-        let snap = new snap_1.default({ serverKey: "", clientKey: "abc" });
+        let snap = new snap_1.Snap({ serverKey: "", clientKey: "abc" });
         (0, chai_1.expect)(snap.apiConfig.get().serverKey).to.be.equals("");
         (0, chai_1.expect)(snap.apiConfig.get().clientKey).to.be.equals("abc");
         (0, chai_1.expect)(snap.apiConfig.get().isProduction).to.be.false;
@@ -93,7 +93,7 @@ describe("Snap.js", () => {
     it("fail to status transaction 401 with no serverKey", () => {
         let config = generateConfig();
         config.serverKey = "";
-        let snap = new snap_1.default(config);
+        let snap = new snap_1.Snap(config);
         return snap.transaction
             .status("non exists order_id")
             .then((res) => { })
@@ -104,7 +104,7 @@ describe("Snap.js", () => {
     it("fail to create transaction 401 or 400 with no serverKey", () => {
         let config = generateConfig();
         config.serverKey = "";
-        let snap = new snap_1.default(config);
+        let snap = new snap_1.Snap(config);
         return snap
             .createTransaction(generateParamMin())
             .then((res) => { })
@@ -118,7 +118,7 @@ describe("Snap.js", () => {
     });
     it("fail to create transaction 400 with no param", () => {
         let config = generateConfig();
-        let snap = new snap_1.default(config);
+        let snap = new snap_1.Snap(config);
         return snap
             .createTransaction()
             .then((res) => { })
@@ -128,7 +128,7 @@ describe("Snap.js", () => {
     });
     it("fail to create transaction with zero gross_amount", () => {
         let config = generateConfig();
-        let snap = new snap_1.default(config);
+        let snap = new snap_1.Snap(config);
         let param = generateParamMin();
         param.transaction_details.gross_amount = 0;
         return snap
@@ -140,7 +140,7 @@ describe("Snap.js", () => {
     });
     it("able to throw custom MidtransError", () => {
         let config = generateConfig();
-        let snap = new snap_1.default(config);
+        let snap = new snap_1.Snap(config);
         let param = generateParamMin();
         param.transaction_details.gross_amount = 0;
         return snap
@@ -157,7 +157,7 @@ describe("Snap.js", () => {
     });
     it("able to set X-Override-Notification request header via exposed http_client object", () => {
         let config = generateConfig();
-        let snap = new snap_1.default(config);
+        let snap = new snap_1.Snap(config);
         let param = generateParamMin();
         let customUrl = "https://mysite.com/midtrans-notification-handler";
         snap.httpClient.http_client.interceptors.request.use(function (config) {

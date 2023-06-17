@@ -4,7 +4,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const chai_1 = require("chai");
-const httpClient_1 = __importDefault(require("./../lib/httpClient"));
+const httpClient_1 = require("./../lib/httpClient");
 const sharedConstants_1 = __importDefault(require("./sharedConstants"));
 function generateParamMin() {
     return {
@@ -22,15 +22,15 @@ describe("httpClient.ts", () => {
         (0, chai_1.expect)(true).to.be.true;
     });
     it("class should be working", () => {
-        let httpClient = new httpClient_1.default();
-        (0, chai_1.expect)(httpClient instanceof httpClient_1.default).to.be.true;
+        let httpClient = new httpClient_1.HttpClient();
+        (0, chai_1.expect)(httpClient instanceof httpClient_1.HttpClient).to.be.true;
     });
     it("have .request function", () => {
-        let httpClient = new httpClient_1.default();
+        let httpClient = new httpClient_1.HttpClient();
         (0, chai_1.expect)(typeof httpClient.request).to.be.equal("function");
     });
     it("able to raw request to snap api", () => {
-        let httpClient = new httpClient_1.default();
+        let httpClient = new httpClient_1.HttpClient();
         return httpClient
             .request("post", sharedConstants_1.default.serverKey, sharedConstants_1.default.SNAP_SANDBOX_BASE_URL + "/transactions", generateParamMin())
             .then((res) => {
@@ -42,7 +42,7 @@ describe("httpClient.ts", () => {
         });
     });
     it("able to raw request GET Token to Core Api", () => {
-        let httpClient = new httpClient_1.default();
+        let httpClient = new httpClient_1.HttpClient();
         return httpClient
             .request("get", sharedConstants_1.default.serverKey, sharedConstants_1.default.CORE_SANDBOX_BASE_URL + "/v2/token", {
             card_number: "5264 2210 3887 4659",
@@ -60,7 +60,7 @@ describe("httpClient.ts", () => {
         });
     });
     it("able to throw fail to parse string as json exception", () => {
-        let httpClient = new httpClient_1.default();
+        let httpClient = new httpClient_1.HttpClient();
         return httpClient
             .request("post", sharedConstants_1.default.serverKey, sharedConstants_1.default.SNAP_SANDBOX_BASE_URL + "/transactions", "this is not json")
             .then((res) => { })

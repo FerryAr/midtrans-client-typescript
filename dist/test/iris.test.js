@@ -4,12 +4,12 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const chai_1 = require("chai");
-const index_1 = __importDefault(require("../index"));
+const index_1 = require("../index");
 const sharedConstants_1 = __importDefault(require("./sharedConstants"));
 let globVar = {
     createdRefNo: '',
 };
-let Iris = index_1.default.Iris;
+let Iris = index_1.Midtrans.Iris;
 describe('Iris.ts', () => {
     it('able to start test', () => {
         (0, chai_1.expect)(true).to.be.true;

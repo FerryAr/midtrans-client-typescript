@@ -1,16 +1,14 @@
 "use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-const apiConfig_1 = __importDefault(require("./apiConfig"));
-const httpClient_1 = __importDefault(require("./httpClient"));
-const transaction_1 = __importDefault(require("./transaction"));
+exports.Snap = void 0;
+const apiConfig_1 = require("./apiConfig");
+const httpClient_1 = require("./httpClient");
+const transaction_1 = require("./transaction");
 class Snap {
     constructor(options = { isProduction: false, serverKey: '', clientKey: '' }) {
-        this.apiConfig = new apiConfig_1.default(options);
-        this.httpClient = new httpClient_1.default(this);
-        this.transaction = new transaction_1.default(this);
+        this.apiConfig = new apiConfig_1.ApiConfig(options);
+        this.httpClient = new httpClient_1.HttpClient(this);
+        this.transaction = new transaction_1.Transaction(this);
     }
     createTransaction(parameter = {}) {
         const apiUrl = this.apiConfig.getSnapApiBaseUrl() + '/transactions';
@@ -30,4 +28,4 @@ class Snap {
         });
     }
 }
-exports.default = Snap;
+exports.Snap = Snap;

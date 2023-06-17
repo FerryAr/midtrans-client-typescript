@@ -4,14 +4,14 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const chai_1 = require("chai");
-const apiConfig_1 = __importDefault(require("./../lib/apiConfig"));
+const apiConfig_1 = require("./../lib/apiConfig");
 const sharedConstants_1 = __importDefault(require("./sharedConstants"));
 describe("Config.js", () => {
     it("able to start test", () => {
         (0, chai_1.expect)(true).to.be.true;
     });
     it("able to store config", () => {
-        let configObj = new apiConfig_1.default(generateConfig());
+        let configObj = new apiConfig_1.ApiConfig(generateConfig());
         (0, chai_1.expect)(configObj.get().isProduction).to.be.false;
         (0, chai_1.expect)(configObj.get().serverKey).to.be.a("string");
         (0, chai_1.expect)(configObj.get().clientKey).to.be.a("string");
@@ -19,7 +19,7 @@ describe("Config.js", () => {
         (0, chai_1.expect)(configObj.get().clientKey).to.be.equal(sharedConstants_1.default.clientKey);
     });
     it("able to set config", () => {
-        let configObj = new apiConfig_1.default();
+        let configObj = new apiConfig_1.ApiConfig();
         configObj.set(generateConfig());
         (0, chai_1.expect)(configObj.get().isProduction).to.be.false;
         (0, chai_1.expect)(configObj.get().serverKey).to.be.a("string");
@@ -28,14 +28,14 @@ describe("Config.js", () => {
         (0, chai_1.expect)(configObj.get().clientKey).to.be.equal(sharedConstants_1.default.clientKey);
     });
     it("able to get correct API url environment for Core Api", () => {
-        let configObj = new apiConfig_1.default();
+        let configObj = new apiConfig_1.ApiConfig();
         configObj.set({ isProduction: false });
         (0, chai_1.expect)(configObj.getCoreApiBaseUrl()).to.be.equal(sharedConstants_1.default.CORE_SANDBOX_BASE_URL);
         configObj.set({ isProduction: true });
         (0, chai_1.expect)(configObj.getCoreApiBaseUrl()).to.be.equal(sharedConstants_1.default.CORE_PRODUCTION_BASE_URL);
     });
     it("able to get correct API url environment for Snap", () => {
-        let configObj = new apiConfig_1.default();
+        let configObj = new apiConfig_1.ApiConfig();
         configObj.set({ isProduction: false });
         (0, chai_1.expect)(configObj.getSnapApiBaseUrl()).to.be.equal(sharedConstants_1.default.SNAP_SANDBOX_BASE_URL);
         configObj.set({ isProduction: true });

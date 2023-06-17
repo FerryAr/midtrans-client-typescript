@@ -4,7 +4,7 @@ import _ from "lodash";
  * Config Object that is used to store isProduction, serverKey, clientKey.
  * And also API base URLs.
  */
-class ApiConfig {
+export class ApiConfig {
   static CORE_PRODUCTION_BASE_URL: string;
   static CORE_SANDBOX_BASE_URL: string;
   static SNAP_PRODUCTION_BASE_URL: string;
@@ -109,5 +109,3 @@ ApiConfig.SNAP_PRODUCTION_BASE_URL = "https://app.midtrans.com/snap/v1";
 ApiConfig.IRIS_SANDBOX_BASE_URL =
   "https://app.sandbox.midtrans.com/iris/api/v1";
 ApiConfig.IRIS_PRODUCTION_BASE_URL = "https://app.midtrans.com/iris/api/v1";
-
-export default ApiConfig;

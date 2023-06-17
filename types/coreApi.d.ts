@@ -1,8 +1,8 @@
-import ApiConfig from "./apiConfig";
-import HttpClient from "./httpClient";
-import Transaction from "./transaction";
+import { ApiConfig } from "./apiConfig";
+import { HttpClient } from "./httpClient";
+import { Transaction } from "./transaction";
 
-declare class CoreApi {
+export declare class CoreApi {
   apiConfig: ApiConfig;
   httpClient: HttpClient;
   transaction: Transaction;
@@ -27,5 +27,3 @@ declare class CoreApi {
   enableSubscription(subscriptionId: string): Promise<object>;
   updateSubscription(subscriptionId: string, parameter?: object): Promise<object>;
 }
-
-export default CoreApi;

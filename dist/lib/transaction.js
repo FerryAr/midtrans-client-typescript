@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.Transaction = void 0;
 /**
  * These are wrapper/implementation of API methods described on:
  * https://api-docs.midtrans.com/#midtrans-api
@@ -74,6 +75,6 @@ class Transaction {
         });
     }
 }
+exports.Transaction = Transaction;
 class MidtransNotificationError extends Error {
 }
-exports.default = Transaction;

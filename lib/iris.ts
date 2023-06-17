@@ -1,8 +1,8 @@
-import ApiConfig from "./apiConfig";
-import HttpClient from "./httpClient";
-import Transaction from "./transaction";
+import { ApiConfig } from "./apiConfig";
+import { HttpClient } from "./httpClient";
+import { Transaction } from "./transaction";
 
-class Iris {
+export class Iris {
   apiConfig: ApiConfig;
   httpClient: HttpClient;
   transaction: Transaction;
@@ -252,5 +252,3 @@ class Iris {
     );
   }
 }
-
-export default Iris;

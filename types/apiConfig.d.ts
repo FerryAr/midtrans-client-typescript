@@ -1,4 +1,4 @@
-declare class ApiConfig {
+export declare class ApiConfig {
   static CORE_PRODUCTION_BASE_URL: string;
   static CORE_SANDBOX_BASE_URL: string;
   static SNAP_PRODUCTION_BASE_URL: string;
@@ -32,5 +32,3 @@ declare class ApiConfig {
   getSnapApiBaseUrl(): string;
   getIrisApiBaseUrl(): string;
 }
-
-export default ApiConfig;

@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.MidtransError = void 0;
 class MidtransError extends Error {
     constructor(message, httpStatusCode = null, ApiResponse = null, rawHttpClientData = null) {
         super(message);
@@ -10,4 +11,4 @@ class MidtransError extends Error {
         this.rawHttpClientData = rawHttpClientData;
     }
 }
-exports.default = MidtransError;
+exports.MidtransError = MidtransError;

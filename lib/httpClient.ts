@@ -1,7 +1,7 @@
 import axios, { AxiosInstance, AxiosResponse } from 'axios';
-import MidtransError from './midtransError';
+import { MidtransError } from './midtransError';
 
-class HttpClient {
+export class HttpClient {
   parent: object;
   http_client: AxiosInstance;
 
@@ -121,5 +121,3 @@ class HttpClient {
     });
   }
 }
-
-export default HttpClient;

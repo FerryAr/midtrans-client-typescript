@@ -1,8 +1,8 @@
-import ApiConfig from './apiConfig';
-import HttpClient from './httpClient';
-import Transaction from './transaction';
+import { ApiConfig } from './apiConfig';
+import { HttpClient } from './httpClient';
+import { Transaction } from './transaction';
 
-class Snap {
+export class Snap {
   apiConfig: ApiConfig;
   httpClient: HttpClient;
   transaction: Transaction;
@@ -39,5 +39,3 @@ interface SnapOptions {
   serverKey: string;
   clientKey: string;
 }
-
-export default Snap;

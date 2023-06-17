@@ -1,4 +1,4 @@
-class MidtransError extends Error {
+export class MidtransError extends Error {
   httpStatusCode: number | null;
   ApiResponse: any | null;
   rawHttpClientData: any | null;
@@ -18,5 +18,3 @@ class MidtransError extends Error {
     this.rawHttpClientData = rawHttpClientData;
   }
 }
-
-export default MidtransError;
