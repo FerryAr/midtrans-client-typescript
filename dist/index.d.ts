@@ -1,10 +1,14 @@
-import { Snap } from './lib/snap';
-import { CoreApi } from './lib/coreApi';
-import { Iris } from './lib/iris';
-import { MidtransError } from './lib/midtransError';
-export declare const Midtrans: {
-    Snap: typeof Snap;
-    CoreApi: typeof CoreApi;
-    Iris: typeof Iris;
-    MidtransError: typeof MidtransError;
-};
+import { Snap as MidtransSnap } from './lib/snap';
+import { CoreApi as MidtransCoreApi } from './lib/coreApi';
+import { Iris as MidtransIris } from './lib/iris';
+import { MidtransError as Err } from './lib/midtransError';
+export declare namespace Midtrans {
+    class Snap extends MidtransSnap {
+    }
+    class CoreApi extends MidtransCoreApi {
+    }
+    class Iris extends MidtransIris {
+    }
+    class MidtransError extends Err {
+    }
+}
