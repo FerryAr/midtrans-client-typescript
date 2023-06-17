@@ -10,7 +10,6 @@
   "scripts": {
     "build": "NODE_OPTIONS='--max-old-space-size=8192' tsc",
     "test": "pnpm run build && mocha --timeout 10000 dist/test/*.test.js",
-    "prepare": "pnpm run build",
     "prepublishOnly": "pnpm run build",
     "preversion": "pnpm run build",
     "version": "pnpm run build",
